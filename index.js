@@ -3,21 +3,10 @@ require("dotenv").config();
 
 (async() => {
     const browser = await puppeteer.launch({
-        headless: false
+        headless: false,
+        defaultViewport: null
     })
     const page = await browser.newPage()
-    //TODO: Get the dimensions of the screen
-    const dimensions = await page.evaluate(() => {
-        return {
-            width: screen.width,
-            height: screen.height,
-        };
-    });
-
-    await page.setViewport({
-        width: 1363,
-        height: 917,
-    });
     await page.goto(process.env.url)
 
     // enter username
