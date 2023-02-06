@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.3",
+    "i": "^0.3.7",
+    "npm": "^9.4.1",
     "puppeteer": "^19.6.3"
   }
 }

@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const colors = require("colors")
 require("dotenv").config();
 
 (async() => {
@@ -54,13 +55,9 @@ require("dotenv").config();
                 if(submit.className === "btn btn-disabled") {
                     console.log(`The button is disabled!`);
                 } else {
-                    try {
-                        console.log("Attempting to take screenshot...")
-                        await takeScreenshot()
-                        console.log("Screenshot taken!")
-                    } catch(e) {
-                        console.error("Failed to take screenshot")
-                    }
+                    console.log("Attempting to take screenshot...")
+                    await takeScreenshot()
+                    console.log("Screenshot taken!")
                 }
             }
         })
@@ -68,17 +65,22 @@ require("dotenv").config();
 
     // this is the function responsible to take the screenshot
     async function takeScreenshot() {
-        let code = await page.$("#top-bar > div > div.bookwork-code.bookwork-code-clickable > span")
-        let extractedCode = await code.evaluate(code => code.textContent, code)
-        let bodyElement = await page.$("#app-container > div.screen > div.main-view > div > div")
-        if(bodyElement) {
-            await bodyElement.screenshot({
-                path: `bookwork-codes/${extractedCode}.png`
-            })
-        } else {
-            await page.screenshot({
-                path: `bookwork-codes/${extractedCode}.png`
-            })
+        try {
+            let code = await page.$("#top-bar > div > div.bookwork-code.bookwork-code-clickable > span")
+            let extractedCode = await code.evaluate(code => code.textContent, code)
+            let bodyElement = await page.$("#app-container > div.screen > div.main-view > div > div")
+            if (bodyElement) {
+                await bodyElement.screenshot({
+                    path: `bookwork-codes/${extractedCode}.png`
+                })
+            } else {
+                await page.screenshot({
+                    path: `bookwork-codes/${extractedCode}.png`
+                })
+            }
+            console.log(colors.bgGreen(`✅ Screenshot taken for ${extractedCode.toLowerCase()}!`))
+        } catch (e) {
+            console.log(colors.bgRed("❌ Failed to take screenshot!"))
         }
     }
 })()
