@@ -38,6 +38,7 @@ require("dotenv").config();
 
     // here we add an event listener to the page
     await page.evaluate(() => {
+        // when user clicks on the submit btn
         document.addEventListener('click', async(event) => {
             if(event.target.innerText === "Submit") {
                 if(event.target.className === "right") return;
@@ -56,6 +57,24 @@ require("dotenv").config();
                 }
             }
         });
+        // when user presses enter
+        document.addEventListener("keydown", async(event) => {
+            if(event.key === "Enter") {
+                let submit = document.getElementById("skill-delivery-submit-button")
+                if(!submit) return;
+                if(submit.className === "btn btn-disabled") {
+                    console.log(`The button is disabled!`);
+                } else {
+                    try {
+                        console.log("Attempting to take screenshot...")
+                        await takeScreenshot()
+                        console.log("Screenshot taken!")
+                    } catch(e) {
+                        console.error("Failed to take screenshot")
+                    }
+                }
+            }
+        })
     })
 
     // this is the function responsible to take the screenshot
