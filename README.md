@@ -55,3 +55,9 @@ The project uses Puppeteer to automate the process of saving bookwork codes each
 ## Acknowledgements
 
 This project is inspired by [Gwyd0's Sparx-bwk project on GitHub](https://github.com/Gwyd0/Sparx-bwk). Thank you Gwyd0 for the inspiration!
+## Sample Images
+![Sample Image 1](https://cdn.discordapp.com/attachments/1038808693548011613/1072094700745535509/Bookwork_code_M38.png)
+![Sample Image 2](https://cdn.discordapp.com/attachments/1038808693548011613/1072094701148196894/Bookwork_code_N48.png)
+![Sample Image 3](https://cdn.discordapp.com/attachments/1038808693548011613/1072094700103807027/Bookwork_code_K18.png)
+![Sample Image 4](https://cdn.discordapp.com/attachments/1038808693548011613/1072094702255493200/Bookwork_code_Q77.png)
+![Sample Image 5](https://cdn.discordapp.com/attachments/1038808693548011613/1072094702515523725/Bookwork_code_R78.png)
